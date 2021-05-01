@@ -3,52 +3,49 @@ import EmailInput from './EmailInput'
 import NameInput from './NameInput'
 import UsernameInput from './UsernameInput'
 
-export const DEFAULT_GENERAL_INFO = {
+export const DEFAULT_GENERAL_INFO = Object.freeze({
     name: "",
     username: "",
     email: ""
-}
+})
 
 export class GeneralInfoSection extends Component {
 
     constructor(props) {
         super(props)
-        this.state = { generalInfo: DEFAULT_GENERAL_INFO }
+        this.state = DEFAULT_GENERAL_INFO
     }
 
     handleNameChange(name) {
-        this.setState(
-            s => ({ generalInfo: { ...s.generalInfo, name } }),
-            () => this.onStateChange()
-        )
+        this.setState({ name }, () => this.onStateChange())
     }
 
     handleUsernameChange(username) {
-        this.setState(
-            s => ({ generalInfo: { ...s.generalInfo, username } }),
-            () => this.onStateChange()
-        )
+        this.setState({ username }, () => this.onStateChange())
     }
 
     handleEmailChange(email) {
-        this.setState(
-            s => ({ generalInfo: { ...s.generalInfo, email } }),
-            () => this.onStateChange()
-        )
+        this.setState({ email }, () => this.onStateChange())
     }
 
     onStateChange() {
-        this.props.onChange(this.state.generalInfo)
+        this.props.onChange({ ...this.state })
     }
 
     render() {
         return (
-            <div>
-                <h2>General info</h2>
-                <form className="form-label form-css-label">
-                    <NameInput onChange={this.handleNameChange.bind(this)} />
-                    <UsernameInput onChange={this.handleUsernameChange.bind(this)} />
-                    <EmailInput onChange={this.handleEmailChange.bind(this)} />
+            <div className="profile-reg__section">
+                <h2 className="profile-reg__header">General info</h2>
+                <form className="profile-reg__form">
+                    <NameInput
+                        value={this.state.name}
+                        onChange={name => this.handleNameChange(name)} />
+                    <UsernameInput
+                        value={this.state.username}
+                        onChange={username => this.handleUsernameChange(username)} />
+                    <EmailInput
+                        value={this.state.email}
+                        onChange={email => this.handleEmailChange(email)} />
                 </form>
             </div>
         )

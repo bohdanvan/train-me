@@ -1,22 +1,21 @@
-import React, { Component } from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import React from 'react'
 
-export class NameInput extends Component {
-    render() {
-        const { onChange } = this.props
-        const id = uuidv4()
-        return (
-            <fieldset>
-                <input
-                    id={id}
-                    type="text"
-                    name="name"
-                    required
-                    onChange={e => onChange(e.currentTarget.value)} />
-                <label htmlFor={id}>Name</label>
-            </fieldset>
-        )
-    }
-}
+const NameInput = ({ value, onChange }) => (
+    <div className="profile-reg__input-block">
+        <input
+            className="profile-reg__input"
+            id="name-input"
+            type="text"
+            name="name"
+            value={value}
+            required
+            onChange={e => onChange(e.currentTarget.value)} />
+        <label
+            className="profile-reg__label"
+            htmlFor="name-input">
+            Name
+        </label>
+    </div>
+)
 
 export default NameInput

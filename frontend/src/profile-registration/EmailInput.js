@@ -1,22 +1,21 @@
-import React, { Component } from 'react'
-import { v4 as uuidv4 } from 'uuid'
+import React from 'react'
 
-export class EmailInput extends Component {
-    render() {
-        const { onChange } = this.props
-        const id = uuidv4()
-        return (
-            <fieldset>
-                <input
-                    id={id}
-                    type="email"
-                    name="email"
-                    required
-                    onChange={e => onChange(e.currentTarget.value)} />
-                <label htmlFor={id}>Email</label>
-            </fieldset>
-        )
-    }
-}
+const EmailInput = ({ value, onChange }) => (
+    <div className="profile-reg__input-block">
+        <input
+            className="profile-reg__input"
+            id="email-input"
+            type="email"
+            name="email"
+            value={value}
+            required
+            onChange={e => onChange(e.currentTarget.value)} />
+        <label
+            className="profile-reg__label"
+            htmlFor="email-input">
+            Email
+        </label>
+    </div>
+)
 
 export default EmailInput
