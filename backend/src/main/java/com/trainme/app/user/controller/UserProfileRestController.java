@@ -1,6 +1,6 @@
 package com.trainme.app.user.controller;
 
-import com.trainme.app.user.controller.exceptions.EntityNotFoundException;
+import com.trainme.app.common.controller.exceptions.EntityNotFoundException;
 import com.trainme.app.user_profile.entity.UserProfile;
 import com.trainme.app.user_profile.service.UserProfileService;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ public class UserProfileRestController {
     }
 
     @GetMapping("/profile/{id}")
-    public UserProfile getUserProfile(@PathVariable Long id) {
+    public UserProfile getUserProfile(@PathVariable long id) {
         return userProfileService.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
@@ -24,13 +24,8 @@ public class UserProfileRestController {
         return userProfileService.save(profile);
     }
 
-    @PutMapping("/profile")
-    public UserProfile updateUserProfile(@RequestBody UserProfile profile) {
-        return userProfileService.save(profile);
-    }
-
     @DeleteMapping("/profile/{id}")
-    public void saveUserProfile(@PathVariable Long id) {
+    public void saveUserProfile(@PathVariable long id) {
         userProfileService.delete(id);
     }
 }

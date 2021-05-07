@@ -1,6 +1,6 @@
 package com.trainme.app.user.controller;
 
-import com.trainme.app.user.controller.exceptions.EntityNotFoundException;
+import com.trainme.app.common.controller.exceptions.EntityNotFoundException;
 import com.trainme.app.user.entity.User;
 import com.trainme.app.user.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ public class UserRestController {
     }
 
     @GetMapping("/user/{id}")
-    public User getUser(@PathVariable Long id) {
+    public User getUser(@PathVariable long id) {
         return userService.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 

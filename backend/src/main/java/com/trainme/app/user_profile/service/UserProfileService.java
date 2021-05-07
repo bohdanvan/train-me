@@ -2,17 +2,15 @@ package com.trainme.app.user_profile.service;
 
 import com.trainme.app.user_profile.entity.UserProfile;
 import com.trainme.app.user_profile.repository.UserProfileRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class UserProfileService {
     private final UserProfileRepository userProfileRepository;
-
-    public UserProfileService(UserProfileRepository userProfileRepository) {
-        this.userProfileRepository = userProfileRepository;
-    }
 
     public Optional<UserProfile> findById(Long id) {
         return userProfileRepository.findById(id);

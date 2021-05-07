@@ -1,4 +1,4 @@
-package com.trainme.app.user.controller.exceptions;
+package com.trainme.app.common.controller.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

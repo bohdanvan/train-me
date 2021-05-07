@@ -1,9 +1,16 @@
 package com.trainme.app.user_profile.entity;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@RequiredArgsConstructor
+@Getter
+@Setter
 @Entity
 public class UserProfile {
     @Id
@@ -15,31 +22,12 @@ public class UserProfile {
     private UserGender gender;
     private int age;
 
-    public UserProfile() {
-
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public UserGender getGender() {
-        return gender;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhone() {
-        return phone;
+    public UserProfile(Long userId, String name, String email, String phone, UserGender gender, int age) {
+        this.userId = userId;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.age = age;
     }
 }
