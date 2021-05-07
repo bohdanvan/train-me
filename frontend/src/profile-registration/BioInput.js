@@ -5,7 +5,7 @@ const BioInput = ({ value, onChange }) => (
         <textarea
             className="profile-reg__input"
             id="bio-input"
-            name="birthDate"
+            name="bio"
             placeholder="Tell about you"
             value={value}
             onChange={e => onChange(e.currentTarget.value)} />
