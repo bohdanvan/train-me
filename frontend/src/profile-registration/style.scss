@@ -69,6 +69,25 @@
         transform: translate3d(0, -10px, 0);
     }
 }
+.profile-reg__submit-btn {
+    display: block;
+    width: 100%;
+    height: 3em;
+    padding: 16px 8px;
+    border: 0;
+    border-radius: 4px 4px 4px 4px;
+    line-height: 1;
+    
+    font-size: 20px;
+    font-weight: 400;
+    text-shadow: -1px -1px rgba(0, 0, 0, 0.1);
+    color: #fff;
+
+    background: rgba(90, 17, 191, 0.5);
+    outline: 0;
+    appearance: none;
+    
+}
 .profile-reg__label {
     position: absolute;
     top: 15px;
