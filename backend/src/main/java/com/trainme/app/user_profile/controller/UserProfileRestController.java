@@ -1,4 +1,4 @@
-package com.trainme.app.user.controller;
+package com.trainme.app.user_profile.controller;
 
 import com.trainme.app.common.controller.exceptions.EntityNotFoundException;
 import com.trainme.app.user_profile.entity.UserProfile;
