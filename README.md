@@ -1,2 +1,3 @@
-# train-me
+# TrainMe
+
 TrainMe main repo
