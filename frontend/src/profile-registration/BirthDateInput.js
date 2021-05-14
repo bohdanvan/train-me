@@ -12,7 +12,7 @@ const BirthDateInput = ({ value, onChange }) => (
         <label
             className="profile-reg__label"
             htmlFor="bio-input">
-            Email
+            Birth date
         </label>
     </div>
 )

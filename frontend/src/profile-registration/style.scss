@@ -1,5 +1,16 @@
 // Idea from https://codepen.io/sivan/pen/alKwf
 
+.profile-reg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font: 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 200;
+    background: url("http://f.ggssh.com/label-bg.jpg") 50% 50%;
+    background-size: cover;
+    color: #212121;
+}
 .profile-reg__section {
     width: 80%;
     min-width: 320px;
@@ -68,6 +79,7 @@
         font-size: 12px;
         transform: translate3d(0, -10px, 0);
     }
+    box-sizing: border-box;
 }
 .profile-reg__submit-btn {
     display: block;
@@ -77,7 +89,7 @@
     border: 0;
     border-radius: 4px 4px 4px 4px;
     line-height: 1;
-    
+
     font-size: 20px;
     font-weight: 400;
     text-shadow: -1px -1px rgba(0, 0, 0, 0.1);
@@ -86,7 +98,6 @@
     background: rgba(90, 17, 191, 0.5);
     outline: 0;
     appearance: none;
-    
 }
 .profile-reg__label {
     position: absolute;
