@@ -10,7 +10,7 @@
 
     <artifactId>train-me-be</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>train-me-be</name>
+    <name>backend</name>
     <description>Train BE</description>
 
     <dependencies>
