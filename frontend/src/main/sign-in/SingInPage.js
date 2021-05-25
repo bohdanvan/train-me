@@ -6,6 +6,9 @@ import SignInFormContainer from './SignInFormContainer'
 
 const useStyles = makeStyles((theme) => ({
     paper: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
         width: 'auto',
         marginLeft: theme.spacing(3),
         marginRight: theme.spacing(3),
@@ -15,9 +18,6 @@ const useStyles = makeStyles((theme) => ({
             marginRight: 'auto',
         },
         marginTop: theme.spacing(8),
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
         padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme.spacing(3)}px`,
     },
     container: {
