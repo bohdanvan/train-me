@@ -1,9 +1,8 @@
+import App from 'App'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ProfileRegistration from './profile-registration/ProfileRegistration'
-import './index.scss'
 
 ReactDOM.render(
-    <ProfileRegistration />,
+    <App />,
     document.getElementById('root')
 )
