@@ -29,9 +29,6 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtUnAuthorizedResponseAuthenticationEntryPoint jwtUnAuthorizedResponseAuthenticationEntryPoint;
     private final JwtTokenAuthorizationOncePerRequestFilter jwtAuthenticationTokenFilter;
 
-    @Value("${jwt.get.token.uri}")
-    private String authenticationPath;
-
     public JWTWebSecurityConfig(UserDetailsService jwtInMemoryUserDetailsService, JwtUnAuthorizedResponseAuthenticationEntryPoint jwtUnAuthorizedResponseAuthenticationEntryPoint, JwtTokenAuthorizationOncePerRequestFilter jwtAuthenticationTokenFilter) {
         this.jwtInMemoryUserDetailsService = jwtInMemoryUserDetailsService;
         this.jwtUnAuthorizedResponseAuthenticationEntryPoint = jwtUnAuthorizedResponseAuthenticationEntryPoint;
@@ -75,11 +72,9 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .ignoring()
                 .antMatchers(
                         HttpMethod.POST,
-                        authenticationPath
+                        "/authenticate"
                 )
                 .antMatchers(HttpMethod.OPTIONS, "/**")
-                .and()
-                .ignoring()
                 .antMatchers("/admin/**") // TODO remove this hack after admin role implementation
                 .antMatchers("/sign-up/**")
                 .and()
