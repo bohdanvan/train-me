@@ -4,6 +4,11 @@ import com.trainme.app.common.controller.exceptions.AuthenticationException;
 import com.trainme.app.security.jwt.JwtTokenRequest;
 import com.trainme.app.security.jwt.JwtTokenResponse;
 import com.trainme.app.security.jwt.JwtTokenUtil;
+import com.trainme.app.security.jwt.SignUpRequest;
+import com.trainme.app.security.jwt.entity.JwtUserDetails;
+import com.trainme.app.user.entity.User;
+import com.trainme.app.user.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,27 +24,25 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
 @RestController
+@RequiredArgsConstructor
 @CrossOrigin(origins = {"http://localhost:3000", "http://localhost:4200"})
 public class JwtAuthenticationRestController {
 
     private final AuthenticationManager authenticationManager;
     private final JwtTokenUtil jwtTokenUtil;
     private final UserDetailsService jwtInMemoryUserDetailsService;
+    private final UserService userService;
     @Value("${jwt.http.request.header}")
     private String tokenHeader;
 
-    public JwtAuthenticationRestController(AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil, UserDetailsService jwtInMemoryUserDetailsService) {
-        this.authenticationManager = authenticationManager;
-        this.jwtTokenUtil = jwtTokenUtil;
-        this.jwtInMemoryUserDetailsService = jwtInMemoryUserDetailsService;
-    }
+    @PostMapping("/sign-up")
+    public ResponseEntity<?> signUp(@RequestBody SignUpRequest signUpRequest) {
+        final User user = userService.register(signUpRequest);
 
-//    @PostMapping("sign-up")
-//    public ResponseEntity<?> signUp(@RequestBody SignUpRequest signUpRequest) {
-//        final UserDetails userDetails = jwtInMemoryUserDetailsService.createUser(signUpRequest);
-//
-//        if (userDetails)
-//    }
+        final String token = jwtTokenUtil.generateToken(JwtUserDetails.createFromUser(user));
+
+        return ResponseEntity.ok(new JwtTokenResponse(token));
+    }
 
     @RequestMapping(value = "${jwt.get.token.uri}", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtTokenRequest authenticationRequest)

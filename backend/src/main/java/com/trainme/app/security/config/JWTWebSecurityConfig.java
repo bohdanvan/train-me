@@ -80,6 +80,10 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS, "/**")
                 .and()
                 .ignoring()
+                .antMatchers("/admin/**") // TODO remove this hack after admin role implementation
+                .antMatchers("/sign-up/**")
+                .and()
+                .ignoring()
                 .antMatchers(HttpMethod.GET, "/")  //Other Stuff You want to Ignore
                 .and()
                 .ignoring()
