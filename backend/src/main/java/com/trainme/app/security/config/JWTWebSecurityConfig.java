@@ -1,5 +1,7 @@
-package com.trainme.app.security.jwt;
+package com.trainme.app.security.config;
 
+import com.trainme.app.security.jwt.JwtTokenAuthorizationOncePerRequestFilter;
+import com.trainme.app.security.jwt.JwtUnAuthorizedResponseAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -37,15 +39,10 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth, PasswordEncoder passwordEncoder) throws Exception {
         auth
                 .userDetailsService(jwtInMemoryUserDetailsService)
-                .passwordEncoder(passwordEncoderBean());
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoderBean() {
-        return new BCryptPasswordEncoder();
+                .passwordEncoder(passwordEncoder);
     }
 
     @Bean
@@ -73,7 +70,7 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    public void configure(WebSecurity webSecurity) throws Exception {
+    public void configure(WebSecurity webSecurity) {
         webSecurity
                 .ignoring()
                 .antMatchers(

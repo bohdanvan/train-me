@@ -12,8 +12,8 @@ public class UserServiceTest {
     @Autowired
     UserService userService;
 
-    @Test
-    public void existShouldReturnFalse() {
-        assertThat(userService.exists(new User())).isTrue();
-    }
+//    @Test
+//    public void existShouldReturnFalse() {
+//        assertThat(userService.exists(new User())).isTrue();
+//    }
 }

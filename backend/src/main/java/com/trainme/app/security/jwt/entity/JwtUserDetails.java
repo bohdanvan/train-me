@@ -1,6 +1,7 @@
 package com.trainme.app.security.jwt.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.trainme.app.user.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,12 +19,16 @@ public class JwtUserDetails implements UserDetails {
     private final String password;
     private final Collection<? extends GrantedAuthority> authorities;
 
+    public static JwtUserDetails createFromUser(User user) {
+        return new JwtUserDetails(user.getId(), user.getEmail(), user.getPassword(), user.getRole());
+    }
+
     public JwtUserDetails(Long id, String username, String password, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
 
-        List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(role));
 
         this.authorities = authorities;

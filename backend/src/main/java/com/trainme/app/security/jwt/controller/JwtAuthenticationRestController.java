@@ -1,8 +1,9 @@
 package com.trainme.app.security.jwt.controller;
 
 import com.trainme.app.common.controller.exceptions.AuthenticationException;
-import com.trainme.app.security.jwt.*;
-import com.trainme.app.security.jwt.entity.JwtUserDetails;
+import com.trainme.app.security.jwt.JwtTokenRequest;
+import com.trainme.app.security.jwt.JwtTokenResponse;
+import com.trainme.app.security.jwt.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,13 @@ public class JwtAuthenticationRestController {
         this.jwtInMemoryUserDetailsService = jwtInMemoryUserDetailsService;
     }
 
+//    @PostMapping("sign-up")
+//    public ResponseEntity<?> signUp(@RequestBody SignUpRequest signUpRequest) {
+//        final UserDetails userDetails = jwtInMemoryUserDetailsService.createUser(signUpRequest);
+//
+//        if (userDetails)
+//    }
+
     @RequestMapping(value = "${jwt.get.token.uri}", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtTokenRequest authenticationRequest)
             throws AuthenticationException {
@@ -51,7 +59,7 @@ public class JwtAuthenticationRestController {
         String authToken = request.getHeader(tokenHeader);
         final String token = authToken.substring(7);
         String username = jwtTokenUtil.getUsernameFromToken(token);
-        JwtUserDetails user = (JwtUserDetails) jwtInMemoryUserDetailsService.loadUserByUsername(username);
+//        JwtUserDetails user = (JwtUserDetails) jwtInMemoryUserDetailsService.loadUserByUsername(username);
 
         if (jwtTokenUtil.canTokenBeRefreshed(token)) {
             String refreshedToken = jwtTokenUtil.refreshToken(token);
