@@ -10,7 +10,7 @@
 
     <artifactId>train-me-be</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>train-me-be</name>
+    <name>backend</name>
     <description>Train BE</description>
 
     <dependencies>
@@ -35,6 +35,15 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
